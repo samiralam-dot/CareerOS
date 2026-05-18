@@ -348,69 +348,65 @@ const onSubmit = async (data, isDraft = false) => {
 
   try {
     
-    const payload = {
-      title: data.jobTitle,
-      companyName: data.companyName,
-      jobType: data.jobType,
+       const payload = {
+  title: data.jobTitle,
+  companyName: data.companyName,
+  jobType: data.jobType,
 
-      // fix enum
-      workmode:
-        data.workMode === "ONSITE"
-          ? "ON_SITE"
-          : data.workMode === "REMOTE"
-          ? "REMOTE"
-          : "HYBRID",
+  workmode:
+    data.workMode === "ONSITE"
+      ? "ON_SITE"
+      : data.workMode === "REMOTE"
+      ? "REMOTE"
+      : "HYBRID",
 
-      location: data.location,
-      numberofOpenings: Number(data.openings),
-      position: data.positions?.[0], // array → single value
+  location: data.location,
+  numberofOpenings: Number(data.openings),
 
-      salaryType: data.salaryType?.toUpperCase(),
-      salary: Number(data.salaryAmount),
-      bonous: Number(data.bonus) || 0,
+  position: data.positions, // keep ONLY ONE
 
-      experience: data.experience,
+  salaryType: data.salaryType?.toUpperCase(),
+  salary: Number(data.salaryAmount),
+  bonous: Number(data.bonus) || 0,
 
-      roleOverview: data.roleOverview,
-      keyResponsibilities: data.responsibilities,
+  experience: data.experience,
 
-      // convert string → array
-      requiredSkills: data.requiredSkills
-        ?.split(",")
-        .map((s) => s.trim()),
+  roleOverview: data.roleOverview,
+  keyResponsibilities: data.responsibilities,
 
-      preferredSkills: data.preferredSkills
-        ?.split(",")
-        .map((s) => s.trim()),
+  requiredSkills: data.requiredSkills
+    ?.split(",")
+    .map((s) => s.trim()),
 
-      techStack: data.technologies
-        ?.split(",")
-        .map((s) => s.trim()),
+  preferredSkills: data.preferredSkills
+    ?.split(",")
+    .map((s) => s.trim()),
 
-      qualifications: data.qualification,
+  techStack: data.technologies
+    ?.split(",")
+    .map((s) => s.trim()),
 
-      applicationDeadline: data.deadline,
+  qualifications: data.qualification,
 
-      selectionProcess: data.selectionProcess,
-      eligibleBranches:data.branches,
-      coverLetter:data.coverLetterRequired,
-      applicationDeadline:data.deadline,
-      minCGPA:data.minCGPA,
-      passingYear:data.passingYear,
-      position:data.positions,
-      ppoAvailable:data.ppoAvailable,
-      resume:data.resumeRequired,
-      salary:data.salaryAmount,
-      salaryType:data.salaryType,
-     workflowStages: data.workflowStages,
-     portfolioRequired:data.portfolioRequired,
-  backelog:data.backlogAllowed,
-  jobDescriptionPDFUrl:data.jobDescriptionPDFUrl,
-    companyBrochureUrl:data.companyBrochureUrl,
+  applicationDeadline: data.deadline,
 
+  selectionProcess: data.selectionProcess,
+  eligibleBranches: data.branches,
+  coverLetter: data.coverLetterRequired,
 
+  minCGPA: data.minCGPA,
+  passingYear: data.passingYear,
 
-    };
+  ppoAvailable: data.ppoAvailable,
+  resume: data.resumeRequired,
+
+  workflowStages: data.workflowStages,
+  portfolioRequired: data.portfolioRequired,
+  backelog: data.backlogAllowed,
+
+  jobDescriptionPDFUrl: data.jobDescriptionPDFUrl,
+  companyBrochureUrl: data.companyBrochureUrl,
+};
 
    
 
