@@ -70,12 +70,12 @@ export const signup = async (req, res) => {
     const token = generateToken(newUser);
 
     // ✅ ONLY COOKIE (NO HEADER, NO TOKEN IN BODY REQUIRED)
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: false, // true only in production (https)
-      sameSite: "lax",
-      maxAge: 7 * 24 * 60 * 60 * 1000,
-    });
+  res.cookie("token", token, {
+  httpOnly: true,
+  secure: true,        // Render = HTTPS
+  sameSite: "none",    // REQUIRED for cross-site
+  maxAge: 7 * 24 * 60 * 60 * 1000,
+});
 
     return res.status(201).json({
       success: true,
@@ -90,12 +90,11 @@ export const signup = async (req, res) => {
 
 export const signout = async (req, res) => {
   try {
-    res
-      .clearCookie("token", {
-        httpOnly: true,
-        secure: true, // set false in localhost if needed
-        sameSite: "strict"
-      })
+    res.clearCookie("token", {
+  httpOnly: true,
+  secure: true,
+  sameSite: "none"
+})
       .status(200)
       .json({
         success: true,
