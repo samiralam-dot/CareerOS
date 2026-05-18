@@ -69,7 +69,7 @@ export const signup = async (req, res) => {
 
     const token = generateToken(newUser);
 
-    // ✅ ONLY COOKIE (NO HEADER, NO TOKEN IN BODY REQUIRED)
+  
 res.cookie("token", token, {
   httpOnly: true,
   secure: true,        // MUST for Render + Vercel HTTPS
