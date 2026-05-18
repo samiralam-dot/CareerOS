@@ -348,10 +348,10 @@ const onSubmit = async (data, isDraft = false) => {
 
   try {
     
-   const payload = {
-  title: data.jobTitle,
-  companyName: data.companyName,
-  jobType: data.jobType,
+    const payload = {
+      title: data.jobTitle,
+      companyName: data.companyName,
+      jobType: data.jobType,
 
   workmode:
     data.workMode === "ONSITE"
@@ -390,23 +390,27 @@ const onSubmit = async (data, isDraft = false) => {
 
   applicationDeadline: data.deadline,
 
-  selectionProcess: data.selectionProcess,
-  eligibleBranches: data.branches,
-  coverLetter: data.coverLetterRequired,
+      selectionProcess: data.selectionProcess,
+      eligibleBranches:data.branches,
+      coverLetter:data.coverLetterRequired,
+      applicationDeadline:data.deadline,
+      minCGPA:data.minCGPA,
+      passingYear:data.passingYear,
+      position:data.positions,
+      ppoAvailable:data.ppoAvailable,
+      resume:data.resumeRequired,
+      salary:data.salaryAmount,
+      salaryType:data.salaryType,
+     workflowStages: data.workflowStages,
+     portfolioRequired:data.portfolioRequired,
+  backelog:data.backlogAllowed,
+  jobDescriptionPDFUrl:data.jobDescriptionPDFUrl,
+    companyBrochureUrl:data.companyBrochureUrl,
 
-  minCGPA: data.minCGPA,
-  passingYear: data.passingYear,
 
-  ppoAvailable: data.ppoAvailable,
-  resume: data.resumeRequired,
 
-  workflowStages: data.workflowStages,
-  portfolioRequired: data.portfolioRequired,
-  backelog: data.backlogAllowed,
+    };
 
-  jobDescriptionPDFUrl: data.jobDescriptionPDFUrl,
-  companyBrochureUrl: data.companyBrochureUrl,
-};
    
 
  const res =  await createJob(payload)   
