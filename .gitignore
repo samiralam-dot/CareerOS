@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+
+# Env files (VERY IMPORTANT)
+.env
+.env.local
+.env.development
+.env.production
+
+# Logs
+logs
+*.log
+
+# Build outputs
+dist/
+build/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Backend specific (optional)
+backend/node_modules/
+backend/dist/
+backend/uploads/
+
+# Frontend specific (React/Vite/Next)
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+
+# IDE files
+.vscode/
+.idea/
