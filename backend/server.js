@@ -18,7 +18,7 @@ const app = express();
 const PORT = 5000;
 
 app.use(cors({
-  origin: "http://localhost:3000",
+  origin: "https://career-348hqhl5c-samir-s-projects-f7374905.vercel.app",
   credentials: true
 }));
 app.use(express.json());
