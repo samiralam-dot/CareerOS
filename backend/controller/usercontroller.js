@@ -70,10 +70,10 @@ export const signup = async (req, res) => {
     const token = generateToken(newUser);
 
     // ✅ ONLY COOKIE (NO HEADER, NO TOKEN IN BODY REQUIRED)
-  res.cookie("token", token, {
+res.cookie("token", token, {
   httpOnly: true,
-  secure: true,        // Render = HTTPS
-  sameSite: "none",    // REQUIRED for cross-site
+  secure: true,        // MUST for Render + Vercel HTTPS
+  sameSite: "none",    // MUST for cross-site cookies
   maxAge: 7 * 24 * 60 * 60 * 1000,
 });
 
@@ -130,12 +130,12 @@ export const login = async (req, res) => {
     const token = generateToken(user);
 
     
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: false,        
-      sameSite: "lax",
-      maxAge: 7 * 24 * 60 * 60 * 1000, 
-    });
+   res.cookie("token", token, {
+  httpOnly: true,
+  secure: true,        // MUST for Render + Vercel HTTPS
+  sameSite: "none",    // MUST for cross-site cookies
+  maxAge: 7 * 24 * 60 * 60 * 1000,
+});
 
     const { password: _, ...safeUser } = user._doc;
 
