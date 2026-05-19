@@ -1,13 +1,8 @@
-import nodemailer from "nodemailer";
-import dotenv from "dotenv";
-
-dotenv.config();
-
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
-  port: 465,
-  secure: true,
-  family: 4, // ← Force IPv4 socket — this is what actually prevents the ENETUNREACH
+  port: 587,        // ← 465 se 587 karo
+  secure: false,    // ← true se false karo (587 STARTTLS use karta hai)
+  family: 4,
 
   auth: {
     user: process.env.EMAIL_USER,
@@ -26,13 +21,3 @@ const transporter = nodemailer.createTransport({
     rejectUnauthorized: false,
   },
 });
-
-transporter.verify((error) => {
-  if (error) {
-    console.log("Mail Config Error:", error);
-  } else {
-    console.log("Mail server ready");
-  }
-});
-
-export default transporter;
