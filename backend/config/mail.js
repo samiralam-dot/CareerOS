@@ -1,8 +1,14 @@
+import nodemailer from "nodemailer";
+import dotenv from "dotenv";
+
+dotenv.config();
+
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
-  port: 587,        // ← 465 se 587 karo
-  secure: false,    // ← true se false karo (587 STARTTLS use karta hai)
-  family: 4,
+  port: 587,
+  secure: false,
+  requireTLS: true,
+  
 
   auth: {
     user: process.env.EMAIL_USER,
@@ -21,3 +27,17 @@ const transporter = nodemailer.createTransport({
     rejectUnauthorized: false,
   },
 });
+
+
+console.log("Email User:", process.env.EMAIL_USER),
+console.log("Email Password:", process.env.EMAIL_PASSWORD),
+
+transporter.verify((error) => {
+  if (error) {
+    console.log("Mail Config Error:", error);
+  } else {
+    console.log("Mail server ready");
+  }
+});
+
+export default transporter;
