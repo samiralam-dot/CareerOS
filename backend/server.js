@@ -20,7 +20,7 @@ const PORT = 5000;
 
 
 app.use(cors({
-    origin: "https://career-os-p5ge.vercel.app",
+    origin: "https://career-os-mu-five.vercel.app",
     credentials: true
 }));
 
