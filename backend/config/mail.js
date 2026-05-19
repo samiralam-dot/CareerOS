@@ -6,25 +6,28 @@ dotenv.config();
 
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
-  port: 587,
-  secure: false,
-  requireTLS: true,
-  logger: true,
-  debug: true,
+  port: 465,
+  secure: true,
 
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASSWORD
   },
 
-  
   lookup: (hostname, options, callback) => {
     dns.lookup(hostname, { family: 4 }, callback);
   },
 
+  connectionTimeout: 30000,
+  greetingTimeout: 30000,
+  socketTimeout: 30000,
+
+  tls: {
+    minVersion: "TLSv1.2"
+  }
 });
 
-transporter.verify((error, success) => {
+transporter.verify((error) => {
   if (error) {
     console.log("Mail Config Error:", error);
   } else {
