@@ -19,15 +19,11 @@ const PORT = 5000;
 
 
 
-app.use(
-  cors({
-    origin: [
-      "http://localhost:3000",
-      "https://career-os-rouge.vercel.app"
-    ],
+app.use(cors({
+    origin: "https://careeros-4.onrender.com",
     credentials: true
-  })
-);
+}));
+
 app.use(express.json());
 app.use(cookieParser())
 
