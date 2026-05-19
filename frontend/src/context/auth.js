@@ -160,7 +160,7 @@ export const signOut = async () => {
 export const sendOtpMail = async (email, subject, html) => {
   try {
     const res = await axios.post(
-      "https://career-os-d4ze.vercel.app/api/send-mail",
+      `${BASE_URL}/send-mail`,
       {
         email,
         subject,
