@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useContext } from 'react';
+ import { useState, useEffect, useMemo, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm, useWatch } from 'react-hook-form';
 import { RecruiterContext } from "../../context/RecruiterContext";
@@ -365,7 +365,7 @@ const onSubmit = async (data, isDraft = false) => {
 
   position: data.positions, // keep ONLY ONE
 
-  salaryType: data.salaryType?.toUpperCase(),
+  salaryType: data.salaryType,
   salary: Number(data.salaryAmount),
   bonous: Number(data.bonus) || 0,
 
