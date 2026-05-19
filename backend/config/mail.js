@@ -1,23 +1,19 @@
 import nodemailer from "nodemailer";
-import dns from "dns";
 import dotenv from "dotenv";
 
 dotenv.config();
-
-// Prefer IPv4 over IPv6
-dns.setDefaultResultOrder("ipv4first");
 
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 465,
   secure: true,
+  family: 4, // ← Force IPv4 socket — this is what actually prevents the ENETUNREACH
 
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASSWORD,
   },
 
-  // SMTP connection configuration
   connectionTimeout: 30000,
   greetingTimeout: 30000,
   socketTimeout: 30000,
@@ -27,8 +23,8 @@ const transporter = nodemailer.createTransport({
 
   tls: {
     minVersion: "TLSv1.2",
-    rejectUnauthorized: false
-  }
+    rejectUnauthorized: false,
+  },
 });
 
 transporter.verify((error) => {
