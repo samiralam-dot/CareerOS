@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://careeros-2.onrender.com/api";
+const BASE_URL = "https://career-os-oh6v.vercel.app/api";
 const BASE_URL1="https://career-os-d4ze.vercel.app/api";
 
 // ================= INTERVIEW =================
@@ -161,7 +161,7 @@ export const signOut = async () => {
 export const sendOtpMail = async (email, subject, html) => {
   try {
     const res = await axios.post(
-      `${BASE_URL1}/send-mail`,
+      `${BASE_URL}/send-mail`,
       {
         email,
         subject,
