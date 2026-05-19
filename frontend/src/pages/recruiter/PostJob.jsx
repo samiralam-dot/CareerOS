@@ -393,14 +393,13 @@ const onSubmit = async (data, isDraft = false) => {
       selectionProcess: data.selectionProcess,
       eligibleBranches:data.branches,
       coverLetter:data.coverLetterRequired,
-      applicationDeadline:data.deadline,
+
       minCGPA:data.minCGPA,
       passingYear:data.passingYear,
-      position:data.positions,
+
       ppoAvailable:data.ppoAvailable,
       resume:data.resumeRequired,
-      salary:data.salaryAmount,
-      salaryType:data.salaryType,
+     
      workflowStages: data.workflowStages,
      portfolioRequired:data.portfolioRequired,
   backelog:data.backlogAllowed,
