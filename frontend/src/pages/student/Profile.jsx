@@ -78,6 +78,7 @@ const {
 
 useEffect(() => {
   const fetchProfile = async () => {
+    setProfileLoading(true)
     try {
       const data = await getProfile(); 
 
