@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:5000/api";
+const BASE_URL = "https://career-os-oh6v.vercel.app/api";
 const BASE_URL1="https://career-os-d4ze.vercel.app/api";
 
 // ================= INTERVIEW =================
