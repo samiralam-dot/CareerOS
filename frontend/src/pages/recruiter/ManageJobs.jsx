@@ -988,7 +988,7 @@ if (app?.email) {
                                         </svg>
                                     </button>
                                     {
-    job.status === "recruitment_completed"  && (
+      ["recruitment_completed", "interview"].includes(job.status) ? (
                                         <span
                                             className="p-2 text-purple-400 cursor-not-allowed rounded-lg"
                                             title="Shortlisting completed — cannot toggle status"
