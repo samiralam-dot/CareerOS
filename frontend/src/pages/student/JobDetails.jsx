@@ -52,7 +52,8 @@ const [profileLoading, setProfileLoading] = useState(true);
   portfolio: "",
   whyInterested: "",
   coverLetter: "",
-  jobId:jobId
+  jobId:jobId,
+        resumeUrl:userProfile.resume||user?.resume||'',
        
     });
 
