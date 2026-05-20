@@ -1663,17 +1663,18 @@ if (app?.email) {
             )}
 
             {/* Applicant Detail Modal */}
-            {selectedApplicant && (
+           {selectedApplicant && (
+                    
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4">
                     <div className="bg-white rounded-2xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
                         {/* Modal Header */}
                         <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 rounded-t-2xl flex items-center justify-between">
                             <div className="flex items-center gap-3">
                                 <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-bold text-lg">
-                                    {selectedApplicant.studentName?.charAt(0)?.toUpperCase() || '?'}
+                                    {selectedApplicant.fullName?.charAt(0)?.toUpperCase() || '?'}
                                 </div>
                                 <div>
-                                    <h2 className="text-lg font-bold text-gray-900">{selectedApplicant?.fullName}</h2>
+                                    <h2 className="text-lg font-bold text-gray-900">{selectedApplicant.fullName}</h2>
                                     <p className="text-sm text-gray-500">{selectedApplicant.email}</p>
                                 </div>
                             </div>
@@ -1700,7 +1701,7 @@ if (app?.email) {
                                     </span>
                                 )}
                                 <span className="text-sm text-gray-500">
-                                    Applied on {formatDate(selectedApplicant.appliedAt)}
+                                    Applied on {formatDate(selectedApplicant.createdAt)}
                                 </span>
                             </div>
 
@@ -1746,7 +1747,7 @@ if (app?.email) {
                                 <div>
                                     <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-3">Links</h3>
                                     <div className="flex flex-wrap gap-3">
-                                        {selectedApplicant.resumeUrl && (
+                                        {selectedApplicant && (
                                             <a
                                                 href={selectedApplicant.resumeUrl}
                                                 target="_blank"
