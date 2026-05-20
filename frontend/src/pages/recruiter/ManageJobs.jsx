@@ -1250,7 +1250,7 @@ if (app?.email) {
                                         {/* Applicant content - clicking opens detail modal */}
                                         <div
                                             className="flex-1 min-w-0"
-                                            onClick={() => setSelectedApplicant(app._id)}
+                                            onClick={() => setSelectedApplicant(app)}
                                         >
                                             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                                                 <div className="flex-1">
