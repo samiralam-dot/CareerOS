@@ -1,6 +1,7 @@
 import Application from "../model/Application.js";
 import User from "../model/user.js";
 import Job from "../model/Job.js";
+import Profile from "../model/profile.js";
 
 export const createApplication = async (req, res) => {
   try {
@@ -28,6 +29,8 @@ export const createApplication = async (req, res) => {
 
     // ✅ Find user
     const profile = await User.findById(userId);
+     const resumeId=profile.profileId;
+    const userProfile= await Profile.findById(resumeId);
 
     if (!profile) {
       return res.status(404).json({
@@ -75,7 +78,7 @@ export const createApplication = async (req, res) => {
       email: profile.email,
       rollNumber: profile.rollNumber,
       branch: profile.branch,
-      resumeUrl:resumeUrl,
+   
 
       cgpa,
       phone,
@@ -86,7 +89,7 @@ export const createApplication = async (req, res) => {
       whyInterested,
       coverLetter,
 
-      resumeUrl: profile.resume,
+    resumeUrl: userProfile.resume,
     });
 
     // ✅ Save only IDs
