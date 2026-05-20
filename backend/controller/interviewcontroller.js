@@ -179,12 +179,20 @@ export const updateInterview = async (req, res) => {
       return res.status(400).json({ message: "Invalid interview ID" });
     }
 
-    const updated = await Interview.findByIdAndUpdate(id, { date, time,interviewLink: meetingLink } , {
-      
-  returnDocument: "after",
-  upsert: true
+  const updateData = {};
 
-    });
+if (date != null) updateData.date = date;
+if (time != null) updateData.time = time;
+if (meetingLink != null) updateData.interviewLink = meetingLink;
+
+const updated = await Interview.findByIdAndUpdate(
+  id,
+  updateData,
+  {
+    returnDocument: "after",
+    upsert: true
+  }
+);
 
     if (!updated) {
       return res.status(404).json({ message: "Interview not found" });
