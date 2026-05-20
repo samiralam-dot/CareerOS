@@ -15,6 +15,7 @@ export const createApplication = async (req, res) => {
       portfolio,
       whyInterested,
       coverLetter,
+      resumeUrl,
     } = req.body;
 
     // ✅ Validate
@@ -74,6 +75,7 @@ export const createApplication = async (req, res) => {
       email: profile.email,
       rollNumber: profile.rollNumber,
       branch: profile.branch,
+      resumeUrl:resumeUrl,
 
       cgpa,
       phone,
