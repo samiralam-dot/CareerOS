@@ -53,7 +53,7 @@ const [profileLoading, setProfileLoading] = useState(true);
   whyInterested: "",
   coverLetter: "",
   jobId:jobId,
-        resumeUrl:userProfile.resume||user?.resume||'',
+       
        
     });
 
