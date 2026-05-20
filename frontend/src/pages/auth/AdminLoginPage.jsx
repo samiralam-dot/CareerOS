@@ -45,7 +45,7 @@ const AdminLoginPage = () => {
         }
         } catch (error) {
             console.error('Admin login error:', error);
-            toast.error('Invalid credentials. Contact your administrator.');
+            toast.error(error.message);
         } finally {
             setLoading(false);
         }

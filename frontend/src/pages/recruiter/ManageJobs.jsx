@@ -72,6 +72,7 @@ const userProfile={name:"John Doe"};
 
    useEffect(() => {
   const fetchProfile = async () => {
+    setLoading(true);
     try {
       const result = await getProfile();
       const allJobs=result.user.createdJobs;
@@ -82,6 +83,8 @@ const userProfile={name:"John Doe"};
 
     } catch (err) {
       console.error("Failed to fetch profile:", err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -632,6 +635,8 @@ if (app?.email) {
         );
     }
 
+
+
     return (
         <div>
             {/* Page Header */}
@@ -771,7 +776,7 @@ if (app?.email) {
             {!selectedJob ? (
             <>
             {/* Filters */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 mb-6">
+            <div className="bg-white r>ounded-xl shadow-sm border border-gray-200 p-4 mb-6">
                 <div className="flex flex-wrap items-center gap-2">
                     <span className="text-sm font-medium text-gray-700 mr-2">Filter:</span>
                     {['all', 'active', 'draft', 'closed', 'recruitment_completed', 'placement_completed'].map((status) => {
@@ -802,6 +807,12 @@ if (app?.email) {
                 <div className="flex items-center justify-center py-12">
                     <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-600"></div>
                 </div>
+
+
+
+
+
+                
             ) : filteredJobs.length === 0 ? (
                 <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-12 text-center">
                     <svg

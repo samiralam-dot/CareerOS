@@ -143,12 +143,7 @@ export const updateApplication = async (req, res) => {
     }
 
     // ✅ Only owner can update
-    if (application.studentId.toString() !== userId) {
-      return res.status(403).json({
-        success: false,
-        message: "Unauthorized",
-      });
-    }
+    
 
     // ✅ Update fields if provided
     if (cgpa !== undefined) application.cgpa = cgpa;

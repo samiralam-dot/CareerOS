@@ -35,6 +35,8 @@ const COMPANY_SIZE_OPTIONS = [
 ];
 
 const RecruiterProfile = () => {
+
+
  const {
   userProfile,
   setUserProfile,
@@ -76,6 +78,7 @@ const RecruiterProfile = () => {
     // Fetch recruiter profile data
     useEffect(() => {
         const fetchProfile = async () => {
+            setLoading(true);
            
             try {
                  const data = await getProfile();
@@ -113,6 +116,7 @@ const RecruiterProfile = () => {
                 toast.error('Failed to load profile');
             } finally {
                 setProfileLoading(false);
+                setLoading(false);  
             }
         };
 
@@ -206,7 +210,7 @@ const handleLogoUpload = async (e) => {
         setIsEditMode(false);
     };
 
-    if (profileLoading) {
+    if (loading || profileLoading   ) {
         return (
             <div className="flex items-center justify-center min-h-[60vh]">
                 <div className="text-center">
