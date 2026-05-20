@@ -1747,7 +1747,7 @@ if (app?.email) {
                                 <div>
                                     <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-3">Links</h3>
                                     <div className="flex flex-wrap gap-3">
-                                        {selectedApplicant && (
+                                        {selectedApplicant?.resumeUrl && (
                                             <a
                                                 href={selectedApplicant.resumeUrl}
                                                 target="_blank"
