@@ -72,6 +72,7 @@ const StudentDashboard = () => {
 
 useEffect(() => {
     const fetchProfile = async () => {
+         setLoading(true)
         try {
             const data = await getProfile();
             const response = await getAlljob();
@@ -219,6 +220,8 @@ useEffect(() => {
             
             } catch { /* silent */ }
     };
+
+    
 
          if (loading) {
         return (
