@@ -987,7 +987,10 @@ if (app?.email) {
                                             />
                                         </svg>
                                     </button>
-                                    {job.status === 'recruitment_completed' ? (
+                                    {(
+    job.status === "recruitment_completed" ||
+    job.status === "INTERVIEW"
+) && (
                                         <span
                                             className="p-2 text-purple-400 cursor-not-allowed rounded-lg"
                                             title="Shortlisting completed — cannot toggle status"
