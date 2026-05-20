@@ -987,10 +987,8 @@ if (app?.email) {
                                             />
                                         </svg>
                                     </button>
-                                    {(
-    job.status === "recruitment_completed" ||
-    job.status === "INTERVIEW"
-) && (
+                                    {
+    job.status === "recruitment_completed"  && (
                                         <span
                                             className="p-2 text-purple-400 cursor-not-allowed rounded-lg"
                                             title="Shortlisting completed — cannot toggle status"
@@ -1675,8 +1673,8 @@ if (app?.email) {
                                     {selectedApplicant.studentName?.charAt(0)?.toUpperCase() || '?'}
                                 </div>
                                 <div>
-                                    <h2 className="text-lg font-bold text-gray-900">{selectedApplicant.studentName}</h2>
-                                    <p className="text-sm text-gray-500">{selectedApplicant.studentEmail}</p>
+                                    <h2 className="text-lg font-bold text-gray-900">{selectedApplicant?.fullName}</h2>
+                                    <p className="text-sm text-gray-500">{selectedApplicant.email}</p>
                                 </div>
                             </div>
                             <button
@@ -1744,7 +1742,7 @@ if (app?.email) {
                             )}
 
                             {/* Links */}
-                            {(selectedApplicant.studentLinkedin || selectedApplicant.studentPortfolio || selectedApplicant.resumeUrl) && (
+                            {(selectedApplicant.linkedin || selectedApplicant.portfolio || selectedApplicant.resumeUrl) && (
                                 <div>
                                     <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-3">Links</h3>
                                     <div className="flex flex-wrap gap-3">
@@ -1759,9 +1757,9 @@ if (app?.email) {
                                                 View Resume
                                             </a>
                                         )}
-                                        {selectedApplicant.studentLinkedin && (
+                                        {selectedApplicant.linkedin && (
                                             <a
-                                                href={selectedApplicant.studentLinkedin}
+                                                href={selectedApplicant.linkedin}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="inline-flex items-center gap-2 px-4 py-2 bg-[#0077B5] text-white text-sm font-medium rounded-lg hover:bg-[#006097] transition-colors"
@@ -1770,9 +1768,9 @@ if (app?.email) {
                                                 LinkedIn
                                             </a>
                                         )}
-                                        {selectedApplicant.studentPortfolio && (
+                                        {selectedApplicant.portfolio && (
                                             <a
-                                                href={selectedApplicant.studentPortfolio}
+                                                href={selectedApplicant.portfolio}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="inline-flex items-center gap-2 px-4 py-2 bg-gray-800 text-white text-sm font-medium rounded-lg hover:bg-gray-900 transition-colors"
