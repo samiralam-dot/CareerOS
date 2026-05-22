@@ -26,9 +26,24 @@ const {signIn}=useContext(AppContext)
         setLoading(true);
         try {
           const res=  await signIn(email, password);
-            if(res)
+            if(res){
             toast.success('Welcome back!');
-            // Navigation will happen via useEffect when userProfile loads
+            console.log(res)
+             if (res?.user?.role === "student") {
+                navigate('/student/dashboard');
+            }
+                else if (res?.user?.role === "admin") {
+                navigate('/admin/dashboard');
+            }
+            
+            else {
+                navigate('/recruiter/dashboard');
+            }
+
+
+
+            }
+         
             else           toast.error('Login failed');
         } catch (error) {
             console.error('Login error:', error);
