@@ -290,9 +290,9 @@ export const getAllUser = async () => {
   }
 };
 
-export const getuserById = async (id) => {
+export const getuserByEmail = async (email) => {
   try {
-    const res = await axios.get(`${BASE_URL}/user/${id}`);
+    const res = await axios.get(`${BASE_URL}/user/${email}`);
     return res.data;
 
   } catch (err) {
