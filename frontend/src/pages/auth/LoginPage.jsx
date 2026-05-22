@@ -122,7 +122,7 @@ const {signIn}=useContext(AppContext)
 
                         <div className="text-sm">
                             <Link
-                                to="/forgot-password"
+                                to="/forgotpassword"
                                 className="font-medium text-primary-600 hover:text-primary-500"
                             >
                                 Forgot password?
