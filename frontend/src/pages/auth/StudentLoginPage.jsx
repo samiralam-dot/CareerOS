@@ -139,7 +139,7 @@ const handleSubmit = async (e) => {
                                 <label htmlFor="password" className="block text-sm font-medium text-gray-700">
                                     Password
                                 </label>
-                                <Link to="/forgot-password" className="text-xs font-medium text-blue-600 hover:text-blue-700 transition-colors">
+                                <Link to="/forgotpassword" className="text-xs font-medium text-blue-600 hover:text-blue-700 transition-colors">
                                     Forgot password?
                                 </Link>
                             </div>
