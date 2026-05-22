@@ -40,9 +40,9 @@ const handleSubmit = async (e) => {
          if(!response)return;
        
 
-       if(response?.data?.user?.role !== 'student') {
-        toast.error('You are not a student')
-    return;}
+    //    if(response?.data?.user?.role !== 'student') {
+    //     toast.error('You are not a student')
+    // return;}
 
        
 
