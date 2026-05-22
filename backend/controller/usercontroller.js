@@ -7,7 +7,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-// ✅ Generate JWT Token
+
 const generateToken = (user) => {
   return jwt.sign(
     {
@@ -19,9 +19,7 @@ const generateToken = (user) => {
   );
 };
 
-// ==========================
-// ✅ SIGNUP CONTROLLER
-// ==========================
+
 export const signup = async (req, res) => {
   try {
     const {
@@ -108,9 +106,7 @@ export const signout = async (req, res) => {
   }
 };
 
-// ==========================
-// ✅ LOGIN CONTROLLER
-// ==========================
+
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -152,34 +148,31 @@ export const login = async (req, res) => {
 
 
 
-export const getUserById = async (req, res) => {
-  try {
-    const { id } = req.params;
+export const getUserByEmail = async (req, res) => {
+    try {
+        const { email } = req.params;
 
-    const user = await User.findById(id).select("-password"); // hide password
+        const user = await User.findOne({ email });
 
-    if (!user) {
-      return res.status(404).json({
-        success: false,
-        message: "User not found"
-      });
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: "User not found"
+            });
+        }
+
+        res.status(200).json({
+            success: true,
+            user
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
     }
-
-    res.status(200).json({
-      success: true,
-      user
-    });
-
-  } catch (error) {
-    console.error("Get User Error:", error);
-
-    res.status(500).json({
-      success: false,
-      message: "Server error"
-    });
-  }
 };
-
 
 
 export const getAllUsers = async (req, res) => {
