@@ -30,6 +30,14 @@ const AdminLoginPage = () => {
 
 
            const res= await signIn(email, password, true); 
+              if(!res)return;
+       
+
+       if(res?.data?.user?.role !== 'admin') {
+        toast.error('You are not an Admin')
+    return;}
+
+            
           
            if(res.success&&res.user.role==='admin'){
             toast.success('Admin login successful!');
