@@ -74,7 +74,7 @@ function App() {
                 <Route path="/student/register" element={ <StudentRegisterPage />} />
                 <Route path="/recruiter/login" element={ <RecruiterLoginPage />} />
                 <Route path="/recruiter/register" element={ <RecruiterRegisterPage />} />
-                <Route path="/forgotpassword" element={<ForgotPasswordPage />} />
+                  <Route path="/forgotpassword" element={<ForgotPasswordPage />} />
                 <Route path="/verify-otp" element={<VerifyOTP />} />
             </Route>
 
