@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-hot-toast";
 
 const BASE_URL = "https://career-os-oh6v.vercel.app/api";
 const BASE_URL1="https://career-os-d4ze.vercel.app/api";
@@ -142,7 +143,7 @@ export const signUp = async (userData) => {
     return response.data;
 
   } catch (error) {
-    throw error;
+     toast.error("Login error:", error.response?.data || error);
   }
 };
 
