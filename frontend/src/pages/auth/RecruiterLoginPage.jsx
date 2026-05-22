@@ -26,6 +26,7 @@ const RecruiterLoginPage = () => {
         try {
             
             const result = await signIn(email, password);
+            if(!result)return;
    
             if (result.success&&result.user.role==='recruiter') {
                 toast.success('Signed in successfully!');
