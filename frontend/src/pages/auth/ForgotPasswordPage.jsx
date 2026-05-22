@@ -201,7 +201,7 @@ const ForgotPasswordPage = () => {
 
 
         const result=  await sendOtpMail(email);
-        console.log(result);
+   
 
 
           if(result.success===true){
@@ -227,7 +227,7 @@ const ForgotPasswordPage = () => {
 
     setLoading(true);
     try {
-        console.log('Verifying OTP:', otpUser, 'against', otp);
+     
         await new Promise(r => setTimeout(r, 1000));
         if (otpUser === otp) {
             toast.success('OTP verified!');
