@@ -128,7 +128,7 @@ export const signIn = async (email, password) => {
     return data;
 
   } catch (error) {
-    throw error;
+ toast.error("Login error:", error.response?.data || error);
   }
 };
 
