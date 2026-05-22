@@ -37,6 +37,12 @@ const handleSubmit = async (e) => {
 
     try {
         const response = await signIn(email, password);
+         if(!response)return;
+       
+
+       if(response?.data?.user?.role !== 'student') {
+        toast.error('You are not a student')
+    return;}
 
        
 
@@ -52,7 +58,7 @@ const handleSubmit = async (e) => {
         
 
     } catch (error) {
-        console.error("Login error:", error.message);
+       
 
         toast.error(error.message || "Failed to sign in");
     } finally {
