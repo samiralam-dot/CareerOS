@@ -1,85 +1,133 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { AppContext } from '../../context/AppContex';
+
 
 import toast from 'react-hot-toast';
 
-const ForgotPasswordPage = () => {
+const LoginPage = () => {
     const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
-    const [sent, setSent] = useState(false);
+
+    const navigate = useNavigate();
+const {signIn}=useContext(AppContext)
    
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!email) {
-            toast.error('Please enter your email');
+        if (!email || !password) {
+            toast.error('Please fill in all fields');
             return;
         }
 
         setLoading(true);
         try {
-            await resetPassword(email);
-            setSent(true);
-            toast.success('Password reset email sent!');
+          const res=  await signIn(email, password);
+            if(res){
+            toast.success('Welcome back!');
+            console.log(res)
+             if (res?.user?.role === "student") {
+                navigate('/student/dashboard');
+            }
+                else if (res?.user?.role === "admin") {
+                navigate('/admin/dashboard');
+            }
+            
+            else {
+                navigate('/recruiter/dashboard');
+            }
+
+
+
+            }
+         
+            else           toast.error('Login failed');
         } catch (error) {
-            console.error('Reset password error:', error);
-            toast.error(error.message || 'Failed to send reset email');
+            console.error('Login error:', error);
+            toast.error(error.message || 'Failed to sign in');
         } finally {
             setLoading(false);
         }
     };
 
-    if (sent) {
-        return (
-            <div className="min-h-[calc(100vh-12rem)] flex items-center justify-center py-12 px-4">
-                <div className="max-w-md w-full text-center">
-                    <div className="card p-8">
-                        <div className="w-16 h-16 bg-success-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg className="w-8 h-8 text-success-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                            </svg>
-                        </div>
-                        <h2 className="text-2xl font-bold text-gray-900 mb-2">Check Your Email</h2>
-                        <p className="text-gray-600 mb-6">
-                            We've sent password reset instructions to <strong>{email}</strong>
-                        </p>
-                        <Link to="/login" className="btn-primary btn-md">
-                            Back to Sign In
+    return (
+        <div className="min-h-[calc(100vh-12rem)] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-md w-full space-y-8">
+                <div>
+                    <div className="flex justify-center">
+                        <Link to="/" className="w-16 h-16 bg-gradient-to-br from-primary-600 to-primary-700 rounded-xl flex items-center justify-center hover:shadow-lg transition-shadow" title="Go to Home">
+                            <span className="text-white font-bold text-2xl">C</span>
                         </Link>
                     </div>
-                </div>
-            </div>
-        );
-    }
-
-    return (
-        <div className="min-h-[calc(100vh-12rem)] flex items-center justify-center py-12 px-4">
-            <div className="max-w-md w-full">
-                <div className="text-center mb-8">
-                    <h2 className="text-3xl font-display font-bold text-gray-900">
-                        Forgot Password?
+                    <h2 className="mt-6 text-center text-3xl font-display font-bold text-gray-900">
+                        Welcome Back
                     </h2>
-                    <p className="mt-2 text-gray-600">
-                        Enter your email and we'll send you reset instructions
+                    <p className="mt-2 text-center text-sm text-gray-600">
+                        Sign in to your CareerOS account
                     </p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                    <div>
-                        <label htmlFor="email" className="label">
-                            Email Address
-                        </label>
-                        <input
-                            id="email"
-                            name="email"
-                            type="email"
-                            required
-                            className="input"
-                            placeholder="you@example.com"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
+                <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+                    <div className="space-y-4">
+                        <div>
+                            <label htmlFor="email" className="label">
+                                Email Address
+                            </label>
+                            <input
+                                id="email"
+                                name="email"
+                                type="email"
+                                autoComplete="email"
+                                required
+                                className="input"
+                                placeholder="you@example.com"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                        </div>
+
+                        <div>
+                            <label htmlFor="password" className="label">
+                                Password
+                            </label>
+                            <input
+                                id="password"
+                                name="password"
+                                type="password"
+                                autoComplete="current-password"
+                                required
+                                className="input"
+                                placeholder="••••••••"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                        </div>
+                    </div>
+
+                    <div className="flex items-center justify-between">
+                        <div className="flex items-center">
+                            <input
+                                id="remember-me"
+                                name="remember-me"
+                                type="checkbox"
+                                className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
+                            />
+                            <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
+                                Remember me
+                            </label>
+                        </div>
+
+                        <div className="text-sm">
+                            <Link
+                                to="/forgot-password"
+                                className="font-medium text-primary-600 hover:text-primary-500"
+                            >
+                                Forgot password?
+                            </Link>
+                        </div>
                     </div>
 
                     <button
@@ -87,16 +135,19 @@ const ForgotPasswordPage = () => {
                         disabled={loading}
                         className="w-full btn-primary btn-lg"
                     >
-                        {loading ? 'Sending...' : 'Send Reset Link'}
+                        {loading ? 'Signing in...' : 'Sign In'}
                     </button>
 
                     <div className="text-center space-y-2">
-                        <Link
-                            to="/login"
-                            className="text-sm font-medium text-primary-600 hover:text-primary-500"
-                        >
-                            Back to Sign In
-                        </Link>
+                        <span className="text-sm text-gray-600">
+                            Don&apos;t have an account?{' '}
+                            <Link
+                                to="/register"
+                                className="font-medium text-primary-600 hover:text-primary-500"
+                            >
+                                Sign up
+                            </Link>
+                        </span>
                         <div>
                             <Link
                                 to="/"
@@ -112,5 +163,4 @@ const ForgotPasswordPage = () => {
         </div>
     );
 };
-
-export default ForgotPasswordPage;
+export default LoginPage;
