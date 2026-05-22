@@ -38,9 +38,7 @@ export const signup = async (req, res) => {
       !email ||
       !password ||
       !name ||
-      !role ||
-      (role === "student" && (!rollNumber || !branch)) ||
-      (role === "recruiter" && (!companyName || !designation))
+      !role 
     ) {
       return res.status(400).json({ message: "Please fill in all required fields" });
     }
