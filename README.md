@@ -21,7 +21,7 @@
 
 ### ✅ Key Highlights
 
-- **Fully Serverless** - Zero backend server maintenance using Firebase
+- **Backend-tool** - Built a scalable backend using Node.js, Express.js, MongoDB, and JWT authentication
 - **Real-time Synchronization** - Live updates across all dashboards
 - **Role-Based Access** - Separate experiences for students, recruiters, and admins
 - **Production Ready** - Enterprise-grade security and scalability
