@@ -33,9 +33,7 @@ const AdminLoginPage = () => {
               if(!res)return;
        
 
-       if(res?.data?.user?.role !== 'admin') {
-        toast.error('You are not an Admin')
-    return;}
+    
 
             
           
