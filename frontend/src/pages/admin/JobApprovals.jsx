@@ -606,14 +606,14 @@ if (job?.createdBy?._id) {
                                                 </span>
                                             </div>
                                         )}
-                                        {selectedJob.eligibleBranches?.length > 0 && (
-                                            <div>
-                                                <span className="text-gray-500">Branches:</span>{' '}
-                                                <span className="font-medium text-gray-900">
-                                                    {selectedJob.eligibileBranches.join(', ')}
-                                                </span>
-                                            </div>
-                                        )}
+                                       {selectedJob.eligibleBranches?.length > 0 && (
+    <div>
+        <span className="text-gray-500">Branches:</span>{' '}
+        <span className="font-medium text-gray-900">
+            {selectedJob.eligibleBranches?.join(', ') || 'N/A'}
+        </span>
+    </div>
+)}
                                     </div>
                                 </div>
                             )}
