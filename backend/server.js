@@ -19,11 +19,11 @@ const PORT = 5000;
 
 
 
-app.use(
-  cors({
-    origin: "*"
-  })
-);
+
+app.use(cors({
+    origin: "https://career-os-mu-five.vercel.app",
+    credentials: true
+}));
 
 app.use(express.json());
 app.use(cookieParser())
