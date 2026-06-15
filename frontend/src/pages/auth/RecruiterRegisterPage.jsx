@@ -21,7 +21,7 @@ const RecruiterRegisterPage = () => {
     const [loading, setLoading] = useState(false);
   
     const navigate = useNavigate();
-     const {setotp,sendOtpMail } = useContext(AppContext);
+     const {setotp,sendOtpMail ,signUp} = useContext(AppContext);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
