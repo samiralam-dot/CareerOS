@@ -25,7 +25,7 @@ const StudentRegisterPage = () => {
    
   
     const navigate = useNavigate();
-    const {setotp,sendOtpMail } = useContext(AppContext);
+    const {setotp,sendOtpMail,signUp } = useContext(AppContext);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -65,15 +65,13 @@ const handleSubmit = async (e) => {
             branch: formData.branch || null,
             password: formData.password,
         };
-        const otp= await sendOtpMail(formData.email);
-        if(otp){
-            setotp(otp.otp);
-            navigate('/verify-otp', {
-    state: {
-        userData
-    }
-});
-        }
+        const response = await signUp(userData);
+
+        if (response.success) {
+
+            toast.success("Account created successfully");
+            navigate('/student/dashboard');}
+
 
     } catch (error) {
         console.error('Registration error:', error.response?.data || error.message);
