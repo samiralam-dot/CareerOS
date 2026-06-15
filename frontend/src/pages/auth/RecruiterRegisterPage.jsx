@@ -65,16 +65,21 @@ const RecruiterRegisterPage = () => {
             designation: formData.designation,
         };
 
-             const otp= await sendOtpMail(formData.email);
-        if(otp){
-            setotp(otp.otp);
-            navigate('/verify-otp', {
-    state: {
-        userData
-    }
-});
-        }
+      const response = await signUp(userData);
 
+        if (response.success) {
+
+            toast.success("Account created successfully");
+             navigate('/recruiter/dashboard');}
+
+           
+          
+
+
+
+
+
+        
     } catch (error) {
         console.error('Registration error:', error.response?.data || error.message);
 
